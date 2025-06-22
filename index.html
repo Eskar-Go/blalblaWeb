@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Speech API</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Interface Vocale</h1>
+
+        <div class="box">
+            <h2>Reconnaissance Vocale</h2>
+            <p>Cliquez sur le bouton et parlez. Le texte reconnu apparaîtra ci-dessous.</p>
+            <button id="startButton">🎙️ Démarrer l'écoute</button>
+            <p><strong>Résultat :</strong></p>
+            <div id="result" class="result-box">En attente...</div>
+
+            <label for="langSelect">Traduire vers :</label>
+            <select id="langSelect">
+                <option value="en">Anglais</option>
+                <option value="es">Espagnol</option>
+                <option value="fr">Français</option>
+                <option value="de">Allemand</option>
+                <option value="it">Italien</option>
+                <option value="pt">Portugais</option>
+                <option value="nl">Néerlandais</option>
+                <option value="pl">Polonais</option>
+                <option value="ru">Russe</option>
+                <option value="zh-CN">Chinois (simplifié)</option>
+                <option value="ja">Japonais</option>
+                <option value="ar">Arabe</option>
+                <option value="tr">Turc</option>
+                <option value="el">Grec</option>
+                <option value="cs">Tchèque</option>
+                <option value="hu">Hongrois</option>
+                <option value="ro">Roumain</option>
+                <option value="bg">Bulgare</option>
+                <option value="da">Danois</option>
+                <option value="sv">Suédois</option>
+                <option value="fi">Finnois</option>
+                <option value="sk">Slovaque</option>
+                <option value="hr">Croate</option>
+                <option value="ko">Coréen</option>
+                <option value="he">Hébreu</option>
+                <option value="hi">Hindi</option>
+                <option value="th">Thaï</option>
+                <option value="vi">Vietnamien</option>
+                <option value="id">Indonésien</option>
+                <option value="ms">Malais</option>
+                <option value="fa">Persan</option>
+                <option value="uk">Ukrainien</option>
+                <option value="no">Norvégien</option>
+                <option value="lt">Lituanien</option>
+                <option value="lv">Letton</option>
+                <option value="et">Estonien</option>
+                <option value="sl">Slovène</option>
+                <option value="sr">Serbe</option>
+                <option value="ca">Catalan</option>
+                <option value="ga">Irlandais</option>
+                <option value="mt">Maltais</option>
+                <option value="sq">Albanais</option>
+                <option value="mk">Macédonien</option>
+                <option value="bs">Bosnien</option>
+                <option value="af">Afrikaans</option>
+                <option value="sw">Swahili</option>
+                <option value="tl">Tagalog</option>
+                <option value="zu">Zoulou</option>
+                <option value="is">Islandais</option>
+                <option value="eo">Espéranto</option>
+                <option value="cy">Gallois</option>
+                <option value="gl">Galicien</option>
+                <option value="eu">Basque</option>
+                <option value="az">Azéri</option>
+                <option value="ka">Géorgien</option>
+                <option value="hy">Arménien</option>
+                <option value="be">Biélorusse</option>
+                <option value="mn">Mongol</option>
+                <option value="ur">Ourdou</option>
+                <option value="bn">Bengali</option>
+                <option value="ta">Tamoul</option>
+                <option value="te">Télougou</option>
+                <option value="ml">Malayalam</option>
+                <option value="kn">Kannada</option>
+                <option value="gu">Gujarati</option>
+                <option value="pa">Pendjabi</option>
+                <option value="si">Cingalais</option>
+                <option value="my">Birman</option>
+                <option value="km">Khmer</option>
+                <option value="lo">Lao</option>
+                <option value="am">Amharique</option>
+                <option value="so">Somali</option>
+                <option value="ne">Népalais</option>
+                <option value="ps">Pachto</option>
+                <option value="kk">Kazakh</option>
+                <option value="uz">Ouzbek</option>
+                <option value="ky">Kirghiz</option>
+                <option value="tg">Tadjik</option>
+                <option value="tk">Turkmène</option>
+                <option value="tt">Tatar</option>
+                <option value="mo">Moldave</option>
+                <option value="lb">Luxembourgeois</option>
+                <option value="fo">Féroïen</option>
+                <option value="sm">Samoan</option>
+                <option value="to">Tongien</option>
+                <option value="mg">Malgache</option>
+                <option value="rw">Kinyarwanda</option>
+                <option value="rn">Kirundi</option>
+                <option value="ny">Chichewa</option>
+                <option value="st">Sotho du Sud</option>
+                <option value="tn">Tswana</option>
+                <option value="xh">Xhosa</option>
+                <option value="ss">Swati</option>
+                <option value="ve">Venda</option>
+                <option value="ts">Tsonga</option>
+                <option value="nr">Ndebele du Sud</option>
+                <option value="nd">Ndebele du Nord</option>
+                <option value="kg">Kongo</option>
+                <option value="yo">Yoruba</option>
+                <option value="ig">Igbo</option>
+                <option value="ha">Haoussa</option>
+                <option value="sn">Shona</option>
+                <option value="om">Oromo</option>
+                <option value="ti">Tigrigna</option>
+                <option value="aa">Afar</option>
+            </select>
+            <label for="translatedText">Traduction :</label>
+            <textarea id="translatedText" rows="2" readonly style="width:100%;margin-top:0.5em;"></textarea>
+            <button id="speakTranslatedButton" style="margin-left:0.5em;vertical-align:top;">🔊 Lire la
+                traduction</button>
+        </div>
+
+        <div class="box">
+            <h2>Synthèse Vocale</h2>
+            <p>Écrivez un texte et cliquez sur "Lire le texte".</p>
+            <textarea id="textToSpeak"
+                rows="4">Bonjour tout le monde ! Ceci est un test de la synthèse vocale.</textarea>
+            <label for="voiceSelect">Choisir une voix :</label>
+            <select id="voiceSelect"></select>
+            <button id="speakButton">🔊 Lire le texte</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
